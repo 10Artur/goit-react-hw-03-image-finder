@@ -28,6 +28,17 @@ export class App extends Component {
     }
   }
 
+  handleSearch = e => {
+    e.preventDefault();
+    if (e.target.elements.query.value.trim() === '') {
+      alert("You didn't write anything!");
+      return;
+    }
+    this.changeQuery(e.target.elements.query.value);
+
+    e.target.reset();
+  };
+
   handleLoadMoreBtn = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
@@ -35,8 +46,8 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Searchbar />
-        <ImageGallery />
+        <Searchbar onSubmit={this.handleSearch} />
+        <ImageGallery images={this.state.images} />
         <Button />
 
         <GlobalStyle />
