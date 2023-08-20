@@ -1,20 +1,28 @@
-// import { BiSearch } from 'react-icons/fa';
+import { BiSearch } from 'react-icons/bi';
+
+import {
+  SearchbarHeader,
+  SearchForm,
+  SearchFormButton,
+  SearchFormInput,
+} from './Searchbar.styled';
 
 export const Searchbar = ({ onSubmit }) => {
   return (
-    <header>
-      <form onSubmit={onSubmit}>
-        <button type="submit">
-          <span>Search</span>
-        </button>
+    <SearchbarHeader>
+      <SearchForm onSubmit={onSubmit}>
+        <SearchFormButton type="submit">
+          <BiSearch />
+        </SearchFormButton>
 
-        <input
+        <SearchFormInput
           type="text"
+          name="query"
           autocomplete="off"
           autofocus
           placeholder="Search images and photos"
         />
-      </form>
-    </header>
+      </SearchForm>
+    </SearchbarHeader>
   );
 };
