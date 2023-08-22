@@ -16,23 +16,6 @@ export class App extends Component {
     isLoading: false,
   };
 
-  // changeQuery = newQuery => {
-  //   this.setState({
-  //     query: `${Date.now()}/${newQuery}`,
-  //     images: [],
-  //     page: 1,
-  //   });
-  // };
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (
-  //     prevState.query !== this.state.query ||
-  //     prevState.page !== this.state.page
-  //   ) {
-  //     console.log(`${this.state.query}, ${this.state.page}`);
-  //   }
-  // }
-
   async componentDidUpdate(prevProps, prevState) {
     const { query, page, perPage } = this.state;
     try {
@@ -59,16 +42,6 @@ export class App extends Component {
     this.setState({ query, items: [], page: 1 });
     evt.target.reset();
   };
-  // handleSearch = e => {
-  //   e.preventDefault();
-  //   if (e.target.elements.query.value.trim() === '') {
-  //     alert("You didn't write anything!");
-  //     return;
-  //   }
-  //   this.changeQuery(e.target.elements.query.value);
-
-  //   e.target.reset();
-  // };
 
   handleLoadMoreBtn = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
