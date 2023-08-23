@@ -48,12 +48,15 @@ export class App extends Component {
   };
 
   render() {
+    const { items, perPage, totalHits, page, isLoading } = this.state;
+    const totalPage = Math.round(totalHits / perPage);
+
     return (
       <Container>
         <Searchbar onSubmit={this.handleSearch} />
-        {this.state.isLoading && <Loader />}
+        {isLoading && <Loader />}
         <ImageGallery images={this.state.items} />
-        {this.state.items.length > 0 && (
+        {items.length > 0 && page <= totalPage && (
           <Button click={this.handleLoadMoreBtn} />
         )}
 
